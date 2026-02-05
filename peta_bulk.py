@@ -73,6 +73,6 @@ plt.subplots_adjust(
 
 
 plt.tight_layout()
-plt.savefig('peta_bulk.pdf', dpi=600)
+plt.savefig('result/peta_bulk.pdf', dpi=600)
 plt.show()
 

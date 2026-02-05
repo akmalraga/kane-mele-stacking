@@ -112,5 +112,6 @@ plt.axvline(x=2.5, c='r', ls='--', label='Prediksi $W_c=2.5\lambda_{SO}$')
 plt.xlabel("$W/\lambda_{SO}$")
 plt.ylabel("DOS pada $E=0$")
 plt.legend()
+plt.saavefig('result/DOS.pdf')
 plt.show()
 

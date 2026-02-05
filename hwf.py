@@ -105,6 +105,6 @@ ax.set_ylabel(r"HWF center $\bar{s}_y$")
 ax.grid(True, which='both', linestyle='--', alpha=0.3)
 plt.title(f"Wannier Centers (SOC={soc}, Rashba={rashba})", fontsize=11)
 plt.tight_layout()
-plt.savefig("hwf_centers.png", dpi=300, bbox_inches='tight')
+plt.savefig("result/hwf_centers.png", dpi=300, bbox_inches='tight')
 plt.show()
 

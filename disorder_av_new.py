@@ -10,7 +10,7 @@ soc_list = np.array([0.06, 0.24])
 rashba = 0.05
 width = 10
 nkr = 101
-n_avg = 100
+n_avg = 50
 W = 10 * soc_list
 
 # Matriks Pauli
@@ -45,8 +45,8 @@ def set_model(t, soc, rashba, delta, W):
     for lvec in ([-1, 0, 0], [1, -1, 0], [0, 1, 0]):
         model.set_hop(soc * 1.j * sigma_z, 1, 1, lvec)
 
-    model.set_hop(0.3 * soc * 1j * sigma_z, 1, 1, [0, 0, 1])
-    model.set_hop(-0.3 * soc * 1j * sigma_z, 0, 0, [0, 0, 1])
+    model.set_hop(0.1 * soc * 1j * sigma_z, 1, 1, [0, 0, 1])
+    model.set_hop(-0.1 * soc * 1j * sigma_z, 0, 0, [0, 0, 1])
 
     model.set_hop(1.j * rashba * sigma_a, 0, 1, [0, 0, 0], mode="add")
     model.set_hop(1.j * rashba * sigma_b, 0, 1, [-1, 0, 0], mode="add")
@@ -112,9 +112,9 @@ for je, soc_val in enumerate(soc_list):
             # Plot semua titik dulu dengan alpha sangat rendah
             ax1.scatter([k_dist[i]] * nbands, rib_eval[:, i],
                         s=0.5, 
-                        c='gray', # Warna dasar abu-abu
-                        alpha=0.6, # <--- KUNCI: Transparansi tinggi
-                        marker='x', linewidths=0)
+                        c='black', # Warna dasar abu-abu
+                        alpha=1.0, # <--- KUNCI: Transparansi tinggi
+                        marker=',', linewidths=0)
 
             # Timpa titik edge (jika ada) dengan warna oranye
             # Cari indeks pita yang merupakan edge state
@@ -124,7 +124,7 @@ for je, soc_val in enumerate(soc_list):
                             s=0.8, 
                             c='C1', # Warna oranye untuk edge
                             alpha=1.0, # Sedikit lebih jelas dari bulk
-                            marker='.', linewidths=0)
+                            marker=',', linewidths=0)
 
         # (Opsional) Print progress setiap 10 sampel agar tahu jalan
         if sample_idx % 10 == 0:
@@ -132,5 +132,5 @@ for je, soc_val in enumerate(soc_list):
 
 print("Plotting selesai. Menyimpan gambar...")
 fig.tight_layout()
-plt.savefig("disordered_band_structure_accumulative.pdf") 
+plt.savefig("result/disordered_band_structure_accumulative.pdf") 
 plt.show()

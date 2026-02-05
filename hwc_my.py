@@ -84,4 +84,5 @@ ax2.set_ylim(-6, 6)
 #model_topo.visualize_3d()
 
 plt.tight_layout()
+plt.savefig('result/topology_vs_trivial.pdf')
 plt.show()

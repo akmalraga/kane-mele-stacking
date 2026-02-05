@@ -3,10 +3,10 @@ import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-delta = 1.0
+delta = 0.0
 t = 1.0
 soc_val = 0.25
-rashba = 0.3
+rashba = 0.05
 W = 0 * soc_val
 
 # Matriks Pauli
@@ -100,5 +100,5 @@ fin_model.visualize_3d(draw_hoppings=True)
 fig, ax = fin_model.plot_bands(
     nk=500, k_nodes=k_nodes, k_node_labels=k_labels, proj_orb_idx=[1]
 )
-
+plt.savefig('result/ribbon_band.pdf')
 plt.show()

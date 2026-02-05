@@ -132,5 +132,6 @@ for a,i in enumerate(delta):
         plt.close(fig_tmp)   
 
 plt.tight_layout()
+plt.savefig("result/peta_ribbon.pdf")
 plt.show()
 
