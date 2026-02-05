@@ -1,6 +1,6 @@
 # 3D Kane-Mele Model: Anderson Disorder & Topology
 
-Repositori ini berisi kumpulan skrip simulasi numerik menggunakan **PythTB** untuk mengeksplorasi fase topologis pada model Kane-Mele 3D. Penelitian ini berfokus pada transisi fase antara isolator topologis dan isolator trivial akibat pengaruh *staggered potential*, *Rashba coupling*, dan gangguan atomik (*Anderson disorder*).
+Repositori ini berisi kumpulan skrip simulasi numerik menggunakan **PythTB** untuk mengeksplorasi fase topologis pada model Kane-Mele 3D(model susun grafena). Penelitian ini berfokus pada studi respon spektrum energi akibat pengaruh *staggered potential*, *Rashba coupling*, dan gangguan atomik (*Anderson disorder*).
 
 ## 🔬 Hamiltonian Model
 Model ini dibangun menggunakan pendekatan *tight-binding* pada kisi hexagonal bertumpuk (stacked honeycomb lattice). Hamiltonian yang digunakan mencakup empat suku utama:
@@ -31,14 +31,32 @@ $$
 ---
 
 ## 📊 Hasil Simulasi
-Simulasi ini bertujuan untuk menunjukkan bahwa keadaan tepi (*edge states*) tetap kokoh (robust) selama celah energi topologis belum tertutup oleh potensial $\Delta$ atau gangguan disorder $W$.
+Simulasi ini bertujuan untuk menunjukkan bahwa keadaan tepi (*hinge states*) tetap kokoh (robust) selama celah energi topologis belum tertutup oleh potensial $\Delta$ atau gangguan disorder $W$.
 
 
 
 ---
 
 ## 🚀 Cara Menjalankan
-1. **Prasyarat**:
-   Pastikan Anda telah menginstal pustaka yang diperlukan:
+1. **Clone Repo**:
+   clone repo ke komputer:
    ```bash
+   git clone https://github.com/akmalraga/kane-mele-stacking
+
+2. **Prasyarat**:
+   Buat enviroment virtual terlebih dahulu:
+   ```bash
+   sudo apt install python3-venv
+   python3 -m venv /myenv
+   source myenv/bin/activate
+   ```
+   Install library menggunakan pip:
+   ```bash
+   sudo apt install python3-pip
    pip install numpy matplotlib pythtb pandas
+   ```
+   Kode siap anda jalankan:
+   contoh:
+   ```bash
+   python3 peta_spektrum.py
+   ```
