@@ -36,12 +36,14 @@ wan_cent /= 2 * np.pi
 nky = wan_cent.shape[0]
 ky = np.linspace(0, 1, nky)
 
+flux = wf_array.berry_flux(plane=(0, 1), state_idx=[0,1], non_abelian=False)
+chern_kz = np.sum(flux, axis=(0,1)) / (2 * np.pi)
+print(chern_kz)
 #print(wan_cent)
 
 for shift in range(-2, 3):
     plt.plot(ky, wan_cent[:, 0] + float(shift), "k")
     plt.plot(ky, wan_cent[:, 1] + float(shift), "k")
-    plt.plot(ky, wan_cent[:, 2] + float(shift), "k")
 
 plt.savefig("result/hwf.pdf")
 plt.show()
