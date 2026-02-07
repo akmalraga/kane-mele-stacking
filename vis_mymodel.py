@@ -106,16 +106,30 @@ print(my_model)
 
 my_model.info()
 
-sc_model = my_model.make_supercell([[2, 1, 0], [-1, 2, 0], [0, 0, 1]], to_home=True)
+sc_model = my_model.make_supercell([[2, 1, 0], [-1, 2, 0], [0, 0, 2]], to_home=True)
 slab_model = sc_model.cut_piece(3,1, glue_edges=False)
 
-fig = slab_model.visualize_3d()
+pos = slab_model.get_orb_vecs()
+
+z_vals = pos[:,2]
+
+z_unique = np.unique(np.round(z_vals, 5))
+
+colors_layer = ["red", "green", "blue", "orange", "purple"]
+
+color_site = []
+
+for z in z_vals:
+    idx = np.where(z_unique == np.round(z,5))[0][0]
+    color_site.append(colors_layer[idx % len(colors_layer)])
+
+fig = slab_model.visualize_3d(show_model_info=False, site_colors=color_site)
 
 k_nodes = [[0, 0], [2 / 3, 1 / 3], [0.5, 0.5], [1 / 3, 2 / 3], [0, 0], [0.5, 0.5]]
 k_label = (r"$\Gamma $", r"$K$", r"$M$", r"$K^\prime$", r"$\Gamma $", r"$M$")
 
-fig, ax = slab_model.plot_bands(
-        nk=500, k_nodes=k_nodes, k_node_labels=k_label, proj_orb_idx=[0], lw=1
-        )
+#fig, ax = slab_model.plot_bands(
+#        nk=500, k_nodes=k_nodes, k_node_labels=k_label, proj_orb_idx=[0], lw=1
+ #       )
 
 plt.show()
