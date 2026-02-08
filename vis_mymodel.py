@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 
 delta = 0.0
@@ -128,8 +129,8 @@ fig = slab_model.visualize_3d(show_model_info=False, site_colors=color_site)
 k_nodes = [[0, 0], [2 / 3, 1 / 3], [0.5, 0.5], [1 / 3, 2 / 3], [0, 0], [0.5, 0.5]]
 k_label = (r"$\Gamma $", r"$K$", r"$M$", r"$K^\prime$", r"$\Gamma $", r"$M$")
 
-#fig, ax = slab_model.plot_bands(
-#        nk=500, k_nodes=k_nodes, k_node_labels=k_label, proj_orb_idx=[0], lw=1
- #       )
+fig, ax = slab_model.plot_bands(
+        nk=500, k_nodes=k_nodes, k_node_labels=k_label, proj_orb_idx=[0], lw=1
+       )
 
-plt.show()
+fig.show()
