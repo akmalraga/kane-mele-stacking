@@ -5,8 +5,8 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 delta = 0.0
 t = 1.0
-soc_val = 0.25
-rashba = 0.05
+soc_val = 0.1
+rashba = 0.1
 W = 0 * soc_val
 
 # Matriks Pauli
@@ -61,9 +61,9 @@ def set_model(t, soc, rashba, delta, W):
         model.set_hop(soc * 1.j * sigma_z, 1, 1, lvec)
 
 
-    model.set_hop(0.1 * soc * 1j * sigma_z, 1, 1, [0, 0, 1])
+    model.set_hop(soc * 1j * sigma_z, 1, 1, [0, 0, 1])
 
-    model.set_hop(-0.1 * soc * 1j * sigma_z, 0, 0, [0, 0, 1])
+    model.set_hop(-soc * 1j * sigma_z, 0, 0, [0, 0, 1])
 
 
     model.set_hop(1.j * rashba * sigma_a, 0, 1, [0, 0, 0], mode="add")
@@ -86,16 +86,26 @@ my_model.info()
 
 fin_model = my_model.make_finite(periodic_dirs=[1], num_cells=[20])
 
-k_nodes = [[0, 0], [0.5, 0], [0.5, 0.5], [0, 0], [0, 0.5]]
-k_labels = [
-    r"$\bar{\Gamma}$",
-    r"$\bar{X}$",
-    r"$\bar{M}$",
-    r"$\bar{\Gamma}$",
-    r"$\bar{Y}$",
-]
+#k_nodes = [[0, 0], [0.5, 0], [0.5, 0.5], [0, 0], [0, 0.5]]
+#k_labels = [
+ #   r"$\bar{\Gamma}$",
+  #  r"$\bar{X}$",
+   # r"$\bar{M}$",
+  #  r"$\bar{\Gamma}$",
+ #   r"$\bar{Y}$",
+#]
 
-fin_model.visualize_3d(draw_hoppings=True)
+#k_nodes = [[0, 0], [2 / 3, 1 / 3], [1 / 2, 1 / 2], [0, 0]]
+k_nodes = [
+    [0.0, 0.0],  # Gamma
+    [0.5, 0.0],  # Mx
+    [0.5, 0.5],  # Lx
+    [0.0, 0.5],  # A
+    [0.0, 0.0]   # Gamma
+]
+k_labels = (r"$\Gamma $",r"$M_x$", r"$L_x$", r"$A$", r"$\Gamma $")
+
+#fin_model.visualize_3d(draw_hoppings=True)
 
 fig, ax = fin_model.plot_bands(
     nk=500, k_nodes=k_nodes, k_node_labels=k_labels, proj_orb_idx=[1]

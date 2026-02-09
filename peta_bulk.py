@@ -9,7 +9,7 @@ from HamiltonianModel.hamiltonian import set_model as sm
 delta = np.array([0.0, 0.5, 1.0, 2.5, 3.0])
 t = 1.0
 soc_val = 0.25
-rashba = np.array([0.0, 0.05, 0.1, 0.2, 0.3])
+rashba = np.array([0.0, 0.5, 1.0, 2.5, 3.0])
 
 fig, ax = plt.subplots(5, 5, figsize=(12, 5))
 
@@ -33,6 +33,7 @@ for i, d in enumerate(delta):
             fig=fig,
             ax=ax[i, j],
             proj_orb_idx=[0],
+            proj_spin=True,
             cmap='inferno',
             cbar=True
         )
