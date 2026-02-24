@@ -64,3 +64,5 @@ def set_model(t, soc, rashba, delta, W):
 
     return model
 
+model = set_model(1.0, 0.3, 0.1, 1.0, 0.0)
+model.info()
