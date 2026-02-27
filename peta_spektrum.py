@@ -60,7 +60,20 @@ for a,i in enumerate(delta):
                 lw=line.get_linewidth()
             )
 
-        ax[a,b].set_title(f"Δ={i}, R={j}")
+        ax[a,b].set_xticks(ax_tmp.get_xticks())
+        if a == len(delta) - 1:
+            ax[a,b].set_xticklabels(k_labels)
+        else:
+            ax[a,b].set_xticklabels([])
+
+        for tick in ax_tmp.get_xticks():
+            ax[a,b].axvline(tick, color="black", linestyle=":", lw=0.5, alpha=0.5)
+
+        ax[a,b].set_title(f"Δ={i}, R={j}", fontsize=10)
+
+        if b == 0:
+            ax[a,b].set_ylabel("Energy (eV)")
+
         ax[a,b].set_xlim(ax_tmp.get_xlim())
         ax[a,b].set_ylim(ax_tmp.get_ylim())
 

@@ -34,7 +34,7 @@ for i, d in enumerate(delta):
             proj_orb_idx=[0],
             proj_spin=True,
             cmap='inferno',
-            cbar=True
+            cbar=False
         )
 
 for i in range(5):
@@ -61,7 +61,6 @@ for i in range(5):
 fig.text(0.5, 0.04, "k-path", ha='center', fontsize=12)
 fig.text(0.04, 0.5, "Energy", va='center', rotation='vertical', fontsize=12)
 
-# Spasi antar subplot (lebih rapi dari tight_layout)
 plt.subplots_adjust(
     left=0.08,
     right=0.98,
