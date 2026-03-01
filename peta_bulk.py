@@ -8,7 +8,7 @@ from HamiltonianModel.hamiltonian import set_model as sm
 delta = np.array([0.0, 0.5, 1.0, 2.5, 3.0])
 t = 1.0
 soc_val = 0.25
-rashba = np.array([0.0, 0.5, 1.0, 2.5, 3.0])
+rashba = np.array([0.0, 0.05, 0.1, 0.2, 0.3])
 
 fig, ax = plt.subplots(5, 5, figsize=(12, 5))
 
@@ -41,12 +41,10 @@ for i in range(5):
     for j in range(5):
         ax[i, j].grid(True, alpha=0.3)
 
-        # Hanya baris terakhir yang punya label k
         if i != 4:
             ax[i, j].set_xticklabels([])
             ax[i, j].set_xlabel("")
         
-        # Hanya kolom pertama yang punya label energi
         if j != 0:
             ax[i, j].set_yticklabels([])
             ax[i, j].set_ylabel("")
