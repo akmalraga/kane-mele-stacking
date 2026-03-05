@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-from HamiltonianModel.hamiltonian import set_model as sm
+from HamiltonianModel.hamiltonian import set_model as sm 
+
 
 delta = np.array([0.0, 0.5, 1.0, 2.5, 3.0])
 t = 1.0
